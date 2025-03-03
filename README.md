@@ -1,23 +1,26 @@
-# Whispering Emoji Icon
+# Hemlis - Simple Password Manager
 
-This repository contains an emoji-style icon depicting one character whispering into another's ear. The design is minimalistic and friendly, suitable for use as an icon.
+Hemlis is a lightweight and easy-to-use password manager designed for simplicity and security. "Hemlis" means "secret" in Swedish, emphasizing our commitment to keeping your credentials safe.
 
 ## Preview
 
 ![Whispering Emoji Icon](./hemlis.png)
 
+## Features
+
+- Securely store and manage your passwords
+- Minimalistic and user-friendly interface
+- Quick access to stored credentials
+- No unnecessary complexity – just simple password management
+
 ## Usage
 
-To use this image in your project, include it as follows:
-
-```html
-<img src="./hemlis.png" alt="Whispering Emoji Icon">
-```
+To use Hemlis, download and install the application, then follow the in-app instructions to securely store your passwords.
 
 ## License
 
-This image is free to use for personal and commercial projects. No attribution required.
+This project is open-source and free to use for personal and commercial purposes.
 
 ## Contact
 
-For any inquiries, feel free to reach out!
+For any inquiries, feature requests, or support, feel free to reach out!
