@@ -16,17 +16,26 @@ import (
 var db *sql.DB
 
 func initDB() {
+	// Fetch DATABASE_URL from environment variables
+	dsn := os.Getenv("DATABASE_URL")
+	if dsn == "" {
+		log.Fatal("❌ ERROR: DATABASE_URL is not set!")
+	}
+
+	fmt.Println("🔍 Trying to connect to:", dsn) // Debugging
+
 	var err error
-	dsn := os.Getenv("DATABASE_URL") // PostgreSQL URL from DigitalOcean
 	db, err = sql.Open("postgres", dsn)
 	if err != nil {
-		log.Fatal("Database connection error:", err)
+		log.Fatal("❌ Database connection error:", err)
 	}
+
 	err = db.Ping()
 	if err != nil {
-		log.Fatal("Database unreachable:", err)
+		log.Fatal("❌ Database unreachable:", err)
 	}
-	fmt.Println("Connected to database!")
+
+	fmt.Println("✅ Connected to database!")
 }
 
 // Encrypt password before storing
