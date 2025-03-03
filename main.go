@@ -36,6 +36,27 @@ func initDB() {
 	}
 
 	fmt.Println("✅ Connected to database!")
+
+	// Create table if it does not exist
+	createTable()
+}
+
+func createTable() {
+	query := `
+	CREATE TABLE IF NOT EXISTS passwords (
+	    id SERIAL PRIMARY KEY,
+	    site TEXT NOT NULL,
+	    username TEXT NOT NULL,
+	    password TEXT NOT NULL,
+	    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	);
+	`
+	_, err := db.Exec(query)
+	if err != nil {
+		log.Fatal("❌ Error creating table:", err)
+	} else {
+		fmt.Println("✅ Passwords table is ready!")
+	}
 }
 
 // Encrypt password before storing
