@@ -1,0 +1,8 @@
+/app/tmp
+/app/.git
+/app/.idea
+/app/vendor
+/app/node_modules
+/app/*.log
+/app/*.env
+/app/docker-compose.yml
