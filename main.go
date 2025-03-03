@@ -114,6 +114,27 @@ func getPasswords(c *gin.Context) {
 	c.JSON(http.StatusOK, passwords)
 }
 
+// Delete a password
+func deletePassword(c *gin.Context) {
+	var input struct {
+		Site     string `json:"site"`
+		Username string `json:"username"`
+	}
+
+	if err := c.BindJSON(&input); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
+		return
+	}
+
+	_, err := db.Exec("DELETE FROM passwords WHERE site=$1 AND username=$2", input.Site, input.Username)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete password"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Password deleted successfully"})
+}
+
 // Main function
 func main() {
 	initDB()
@@ -122,6 +143,7 @@ func main() {
 
 	r.POST("/save", savePassword)
 	r.GET("/passwords", getPasswords)
+	r.POST("/delete", deletePassword)
 
 	port := os.Getenv("PORT")
 	if port == "" {
